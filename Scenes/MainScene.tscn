@@ -51,6 +51,7 @@ maxObstacleHeight = 5
 spaceForPlayer = 200.0
 
 [node name="Ground" parent="Environment" instance=ExtResource( 3 )]
+position = Vector2( 498, 581 )
 
 [node name="Bird" parent="Environment" instance=ExtResource( 2 )]
 position = Vector2( 501, 170 )
@@ -60,3 +61,4 @@ position = Vector2( 511, -42 )
 scale = Vector2( 7.21503, 7.21504 )
 z_index = -10
 texture = ExtResource( 6 )
+region_rect = Rect2( 35.0389, 89.1419, 61.801, 78.3817 )

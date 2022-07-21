@@ -17,7 +17,7 @@ shape = SubResource( 1 )
 
 [node name="GroundMover" type="Node2D" parent="."]
 script = ExtResource( 2 )
-speed = 120.0
+speed = 80.0
 
 [node name="Sprite1" type="Sprite" parent="GroundMover"]
 position = Vector2( -211, 0 )

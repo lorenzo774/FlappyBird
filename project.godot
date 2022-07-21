@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="FlappyBird"
 run/main_scene="res://Scenes/MainScene.tscn"
+config/icon="res://Assets/icon.png"
+config/windows_native_icon="res://Assets/icon.ico"
 
 [debug]
 

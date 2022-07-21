@@ -1,7 +1,6 @@
 using Godot;
 using Godot.Collections;
 
-
 public class GroundMover : Node2D
 {
     [Export]
@@ -46,7 +45,7 @@ public class GroundMover : Node2D
                 var lastSprite = GetFartherSprite();
                 if(lastSprite == null) continue;
                 sprite.Position = new Vector2(
-                    lastSprite.Position.x + spriteWidth - 2, 
+                    lastSprite.Position.x + spriteWidth - (speed * delta), 
                     sprite.Position.y);
             }
         }
