@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/GameManager.cs" type="Script" id=1]
+[ext_resource path="res://Nodes/Bird.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/LevelBuilder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI.cs" type="Script" id=5]
+[ext_resource path="res://Assets/2.png" type="Texture" id=6]
+[ext_resource path="res://Resources/FlappyBirdDynamicFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Assets/Fonts/Flappy-Bird.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 8 )
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource( 1 )
+speed = 1.5
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+script = ExtResource( 5 )
+
+[node name="PointsLbl" type="Label" parent="UI"]
+margin_left = 407.0
+margin_right = 606.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Label" parent="UI"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="LevelBuilder" parent="Environment" instance=ExtResource( 4 )]
+minObstacleHeight = 1
+maxObstacleHeight = 5
+spaceForPlayer = 200.0
+
+[node name="Ground" parent="Environment" instance=ExtResource( 3 )]
+
+[node name="Bird" parent="Environment" instance=ExtResource( 2 )]
+position = Vector2( 501, 170 )
+
+[node name="BG" type="Sprite" parent="Environment"]
+position = Vector2( 511, -42 )
+scale = Vector2( 7.21503, 7.21504 )
+z_index = -10
+texture = ExtResource( 6 )

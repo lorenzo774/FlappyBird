@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Bird.cs" type="Script" id=1]
+[ext_resource path="res://Assets/1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.5, 23 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 33.5, 24 )
+
+[node name="Bird" type="RigidBody2D"]
+mode = 2
+gravity_scale = 15.31
+contact_monitor = true
+script = ExtResource( 1 )
+jump = 800.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3.79167, 3.79167 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 2 )
+
+[connection signal="body_shape_entered" from="." to="." method="OnCollision"]
+[connection signal="area_entered" from="Area" to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="Area" to="." method="OnCollision"]

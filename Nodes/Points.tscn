@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Obstacle.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Points" type="Sprite" groups=["Point"]]
+self_modulate = Color( 0.0784314, 1, 0, 0.431373 )
+centered = false
+region_rect = Rect2( 0, 0, 64, 64 )
+script = ExtResource( 2 )
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+position = Vector2( 32, 32 )
+shape = SubResource( 1 )

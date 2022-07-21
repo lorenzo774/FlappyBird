@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/GroundMover.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512.5, 64.5 )
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/18.png-0618c5b569b45740304951923720073f.stex"
+
+[node name="Ground" type="StaticBody2D"]
+position = Vector2( 501, 581 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 11.5, -32.5 )
+shape = SubResource( 1 )
+
+[node name="GroundMover" type="Node2D" parent="."]
+script = ExtResource( 2 )
+speed = 120.0
+
+[node name="Sprite1" type="Sprite" parent="GroundMover"]
+position = Vector2( -211, 0 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="GroundMover"]
+position = Vector2( 377, 0 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="GroundMover"]
+position = Vector2( 965, 0 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 2 )
