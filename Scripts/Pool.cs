@@ -1,42 +1,45 @@
-using Godot;
 using System.Collections.Generic;
 
-public class Pool : Node2D
+namespace FlappyBird
 {
-    [Export]
-    private int maxObjects = 10;
-    [Export]
-    private PackedScene scene;
-
-    private List<Node2D> objects = new List<Node2D>();
-
-    public override void _Ready()
+    public class Pool : Node2D
     {
-        // Create obstacles
-        for (int i = 0; i < maxObjects; i++)
-        {
-            var obstacle = (Node2D)scene.Instance();
-            obstacle.Visible = false;
-            obstacle.SetProcess(false);
-            objects.Add(obstacle);
-            AddChild(obstacle);
-        }
-    }
+        [Export]
+        private int maxObjects = 10;
+        [Export]
+        private PackedScene scene;
 
-    public Node2D Spawn(Vector2 position, Vector2 scale) 
-    {
-        foreach (Obstacle objectPool in objects)
+        private List<Node2D> objects = new List<Node2D>();
+
+        public override void _Ready()
         {
-            if(!objectPool.Visible) {
-                // var obstacle = obstacles.Dequeue();
-                objectPool.Visible = true;
-                objectPool.Position = position;
-                objectPool.Scale = scale;
-                objectPool.SetProcess(true);
-                objectPool.Speed = GameManager.Instance.Speed;
-                return objectPool;
+            // Create obstacles
+            for (int i = 0; i < maxObjects; i++)
+            {
+                var obstacle = (Node2D)scene.Instance();
+                obstacle.Visible = false;
+                obstacle.SetProcess(false);
+                objects.Add(obstacle);
+                AddChild(obstacle);
             }
         }
-        return null;
+
+        public Node2D Spawn(Vector2 position, Vector2 scale)
+        {
+            foreach (Obstacle objectPool in objects)
+            {
+                if (!objectPool.Visible)
+                {
+                    // var obstacle = obstacles.Dequeue();
+                    objectPool.Visible = true;
+                    objectPool.Position = position;
+                    objectPool.Scale = scale;
+                    objectPool.SetProcess(true);
+                    objectPool.Speed = GameManager.Instance.Speed;
+                    return objectPool;
+                }
+            }
+            return null;
+        }
     }
 }

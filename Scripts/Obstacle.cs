@@ -1,51 +1,51 @@
-using System;
-using Godot;
-
-public class Obstacle : Sprite
+namespace FlappyBird
 {
-    public float Height { get => RegionRect.Size.y * Scale.y; }
-    public float Speed { get; set; }
-
-    [Export]
-    private float speed = 120f;
-
-    public float NormalHeight { get => RegionRect.Size.y; }
-    public float Boundary { get; set; }
-
-    public override void _Process(float delta)
+    public class Obstacle : Sprite
     {
-        Translate(Vector2.Left * delta * speed * Speed);   
-        if(IsOutsideBoundary()) 
+        public float Height { get => RegionRect.Size.y * Scale.y; }
+        public float Speed { get; set; }
+
+        [Export]
+        private float speed = 120f;
+
+        public float NormalHeight { get => RegionRect.Size.y; }
+        public float Boundary { get; set; }
+
+        public override void _Process(float delta)
         {
-            Disable();
+            Translate(Vector2.Left * delta * speed * Speed);
+            if (IsOutsideBoundary())
+            {
+                Disable();
+            }
+            if (GameManager.Instance.Bird.Position.x > Position.x && GameManager.Instance.Bird.Position.x < GetLastXPosition()
+            && GameManager.Instance.Bird.Position.y < -GameManager.Instance.Bird.Height)
+            {
+                GameManager.Instance.ResetGame();
+            }
         }
-        if(GameManager.Instance.Bird.Position.x > Position.x && GameManager.Instance.Bird.Position.x < GetLastXPosition() 
-        && GameManager.Instance.Bird.Position.y < -GameManager.Instance.Bird.Height)
+
+        private float GetLastXPosition()
         {
-            GameManager.Instance.ResetGame();
+            float positionX = Position.x;
+            if (Texture != null)
+            {
+                positionX += (Texture.GetWidth() * Scale.x);
+            }
+            return positionX;
         }
-    }
 
-    private float GetLastXPosition()
-    {
-        float positionX = Position.x;
-        if(Texture != null)
+        private void Disable()
         {
-            positionX += (Texture.GetWidth() * Scale.x);
+            Visible = false;
+            Position = Vector2.Zero;
+            Scale = Vector2.One;
+            SetProcess(false);
         }
-        return positionX;
-    }
 
-    private void Disable()
-    {
-        Visible = false;
-        Position = Vector2.Zero;
-        Scale = Vector2.One;
-        SetProcess(false);
-    }
-
-    private bool IsOutsideBoundary()
-    {
-        return GetLastXPosition() < Boundary; 
+        private bool IsOutsideBoundary()
+        {
+            return GetLastXPosition() < Boundary;
+        }
     }
 }
