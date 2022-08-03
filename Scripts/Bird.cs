@@ -1,5 +1,3 @@
-using Godot;
-
 namespace FlappyBird
 {
     public class Bird : RigidBody2D

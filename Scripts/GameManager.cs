@@ -1,5 +1,4 @@
-using Godot;
-using System;
+global using Godot;
 
 namespace FlappyBird
 {
