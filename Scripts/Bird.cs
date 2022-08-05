@@ -18,7 +18,7 @@ namespace FlappyBird
 
         public override void _Process(float delta)
         {
-            if (Input.IsActionJustPressed("ui_accept"))
+            if (Input.IsActionJustPressed("player_jump"))
             {
                 ApplyCentralImpulse(jumpForce);
             }
