@@ -21,9 +21,9 @@ public class GameManager : Node2D
 
     private static GameManager istance;
 
-    const string birdPath = "Environment/Bird";
-    const string groundMoverPath = "Environment/Ground/GroundMover";
-    const string levelBuilderPath = "Environment/LevelBuilder";
+    private const string birdPath = "Environment/Bird";
+    private const string groundMoverPath = "Environment/Ground/GroundMover";
+    private const string levelBuilderPath = "Environment/LevelBuilder";
 
 
     public void AddPoint() => Points += 1;
