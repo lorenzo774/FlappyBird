@@ -4,8 +4,7 @@ namespace FlappyBird
     {
         public float Height { get => sprite.Texture.GetHeight() * sprite.Scale.y; }
 
-        [Export]
-        private float jump = 10f;
+        [Export] private float jump = 10f;
 
         private Vector2 jumpForce;
         private Sprite sprite;
@@ -34,18 +33,14 @@ namespace FlappyBird
         {
             var parent = node.GetParent();
             if (parent.IsInGroup("Obstacle"))
-            {
                 GameManager.Instance.ResetGame();
-            }
         }
 
         public void OnAreaEntered(Area2D area)
         {
             var parent = area.GetParent();
             if (parent.IsInGroup("Point"))
-            {
                 GameManager.Instance.AddPoint();
-            }
         }
 
     }

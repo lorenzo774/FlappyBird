@@ -6,15 +6,10 @@ namespace FlappyBird
     {
         public float ObstaclesDelay { get => obstaclesDelay; set { obstaclesDelay = value; GetNode<Timer>("Timer").WaitTime = obstaclesDelay; } }
 
-        [Export]
-        private float obstaclesDelay = 4f;
-        [Export]
-        private int minObstacleHeight = 4;
-        [Export]
-        private int maxObstacleHeight = 9;
-
-        [Export]
-        private float spaceForPlayer = 100f;
+        [Export] private float obstaclesDelay = 4f;
+        [Export] private int minObstacleHeight = 4;
+        [Export] private int maxObstacleHeight = 9;
+        [Export] private float spaceForPlayer = 100f;
 
         private Pool obstaclesPool;
         private Pool pointsPool;

@@ -4,10 +4,8 @@ namespace FlappyBird
 {
     public class Pool : Node2D
     {
-        [Export]
-        private int maxObjects = 10;
-        [Export]
-        private PackedScene scene;
+        [Export] private int maxObjects = 10;
+        [Export] private PackedScene scene;
 
         private List<Node2D> objects = new List<Node2D>();
 
@@ -39,6 +37,7 @@ namespace FlappyBird
                     return objectPool;
                 }
             }
+            
             return null;
         }
     }

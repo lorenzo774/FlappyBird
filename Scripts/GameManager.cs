@@ -4,8 +4,7 @@ namespace FlappyBird
 {
     public class GameManager : Node2D
     {
-        [Export]
-        private float speed = 1f;
+        [Export] private float speed = 1f;
 
         public float Speed { get => speed; }
 
@@ -19,6 +18,7 @@ namespace FlappyBird
                 return istance;
             }
         }
+        
         private static GameManager istance;
 
         const string birdPath = "Environment/Bird";
@@ -26,10 +26,7 @@ namespace FlappyBird
         const string levelBuilderPath = "Environment/LevelBuilder";
 
 
-        public void AddPoint()
-        {
-            Points += 1;
-        }
+        public void AddPoint() => Points += 1;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -44,9 +41,6 @@ namespace FlappyBird
             GetNode<LevelBuilder>(levelBuilderPath).ObstaclesDelay /= speed;
         }
 
-        public void ResetGame()
-        {
-            GetTree().ReloadCurrentScene();
-        }
+        public void ResetGame() => GetTree().ReloadCurrentScene();
     }
 }
