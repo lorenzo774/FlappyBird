@@ -9,17 +9,23 @@ namespace FlappyBird
 
         private Vector2 jumpForce;
         private Sprite sprite;
+        private GTimer jumpTimer;
 
         public override void _Ready()
         {
             sprite = GetNode<Sprite>("Sprite");
             jumpForce = new Vector2(0, -jump);
+            jumpTimer = new GTimer(this, 250);
         }
 
         public override void _Process(float delta)
         {
             if (Input.IsActionJustPressed("player_jump"))
             {
+                if (jumpTimer.IsActive())
+                    return;
+                
+                jumpTimer.Start();
                 ApplyCentralImpulse(jumpForce);
             }
         }
