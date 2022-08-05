@@ -26,10 +26,7 @@ namespace FlappyBird
         const string levelBuilderPath = "Environment/LevelBuilder";
 
 
-        public void AddPoint()
-        {
-            Points += 1;
-        }
+        public void AddPoint() => Points += 1;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -44,9 +41,6 @@ namespace FlappyBird
             GetNode<LevelBuilder>(levelBuilderPath).ObstaclesDelay /= speed;
         }
 
-        public void ResetGame()
-        {
-            GetTree().ReloadCurrentScene();
-        }
+        public void ResetGame() => GetTree().ReloadCurrentScene();
     }
 }

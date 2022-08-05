@@ -34,18 +34,14 @@ namespace FlappyBird
         {
             var parent = node.GetParent();
             if (parent.IsInGroup("Obstacle"))
-            {
                 GameManager.Instance.ResetGame();
-            }
         }
 
         public void OnAreaEntered(Area2D area)
         {
             var parent = area.GetParent();
             if (parent.IsInGroup("Point"))
-            {
                 GameManager.Instance.AddPoint();
-            }
         }
 
     }

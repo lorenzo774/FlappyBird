@@ -25,6 +25,7 @@ namespace FlappyBird
         {
             float maxXPos = -100;
             Sprite result = null;
+            
             foreach (Sprite sprite in sprites)
             {
                 if (sprite.Position.x > maxXPos)
@@ -33,6 +34,7 @@ namespace FlappyBird
                     result = sprite;
                 }
             }
+
             return result;
         }
 
@@ -41,13 +43,16 @@ namespace FlappyBird
             foreach (Sprite sprite in sprites)
             {
                 sprite.Translate(Vector2.Left * speed * delta);
+
                 if (sprite.Position.x < -spriteWidth - 300)
                 {
                     var lastSprite = GetFartherSprite();
                     if (lastSprite == null) continue;
-                    sprite.Position = new Vector2(
+                    sprite.Position = new Vector2
+                    (
                         lastSprite.Position.x + spriteWidth - (speed * delta),
-                        sprite.Position.y);
+                        sprite.Position.y
+                    );
                 }
             }
         }
