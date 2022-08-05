@@ -4,8 +4,7 @@ namespace FlappyBird
 {
     public class GameManager : Node2D
     {
-        [Export]
-        private float speed = 1f;
+        [Export] private float speed = 1f;
 
         public float Speed { get => speed; }
 
@@ -19,6 +18,7 @@ namespace FlappyBird
                 return istance;
             }
         }
+        
         private static GameManager istance;
 
         const string birdPath = "Environment/Bird";

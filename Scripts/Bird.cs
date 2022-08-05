@@ -4,8 +4,7 @@ namespace FlappyBird
     {
         public float Height { get => sprite.Texture.GetHeight() * sprite.Scale.y; }
 
-        [Export]
-        private float jump = 10f;
+        [Export] private float jump = 10f;
 
         private Vector2 jumpForce;
         private Sprite sprite;
