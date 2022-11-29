@@ -13,3 +13,4 @@ data_*/
 # Project ignore
 Build
 .vscode
+.idea
